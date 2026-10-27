@@ -1,0 +1,7 @@
+[Event "Example study: the first moves"]
+[Start "0"]
+
+{ A sample chapter. Comments go in braces, variations in brackets; [%cal] draws arrows and [%csl] marks squares, as on Lichess. }
+1. e4 e5 2. Nf3 Nc6 3. Bc4 { [%cal Gc4f7] The bishop looks at f7, the square only the king defends. } 3... Bc5 { [%cal Gc5f2] Black answers in kind. }
+( 3... Nf6 { The Two Knights Defence: Black attacks e4 at once. } 4. d3 )
+4. c3 { White prepares d4. } 4... Nf6 5. d3 { [%csl Gd3,Gc3,Ge4] The quiet set-up: pawns on c3, d3 and e4. } 5... d6 *

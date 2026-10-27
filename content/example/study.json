@@ -1,0 +1,24 @@
+{
+  "id": "example",
+  "title": "Example study: the Italian Game",
+  "subtitle": "1.e4 e5 2.Nf3 Nc6 3.Bc4 Bc5",
+  "orientation": "white",
+  "chapters": [
+    {
+      "id": "intro",
+      "group": "Lines",
+      "title": "The first moves",
+      "type": "line",
+      "file": "lines/intro.pgn",
+      "goals": ["How a chapter file looks: comments, variations, arrows and a question."],
+      "takeaways": ["Both bishops aim at the weakest square of the other side: f7 and f2."]
+    },
+    {
+      "id": "card",
+      "group": "Cards",
+      "title": "A short prose card",
+      "type": "prose",
+      "file": "plans/card.md"
+    }
+  ]
+}
