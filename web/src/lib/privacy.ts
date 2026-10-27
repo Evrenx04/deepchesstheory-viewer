@@ -1,6 +1,6 @@
 // The privacy page (#/gizlilik): the KVKK notice (aydınlatma metni) in Turkish and the GDPR privacy notice in
 // English, every text in one place (PRIVACY / PRIVACY_EN; the page picks one with L()).
-// The controller's postal address is added once the owner of the office address agrees (until then: the city).
+// The controller's postal address is the office address (its owner agreed, 2026-10-28).
 
 /** The page's address: #/gizlilik. Not a study id. */
 export const PRIVACY_ROUTE = "gizlilik";
@@ -8,7 +8,7 @@ export const PRIVACY_ROUTE = "gizlilik";
 /** The data controller (veri sorumlusu): a natural person until the company is founded. */
 export const CONTROLLER = {
   name: "Evren Aykut Ögel",
-  address: "İstanbul, Türkiye",
+  address: "Şehremini Mah. İskender Bostan Sk. No: 21/D, 34104 Fatih, İstanbul, Türkiye",
   email: "contact@deepchesstheory.com",
 };
 
@@ -67,7 +67,7 @@ export const PRIVACY: PrivacyText = {
     {
       title: "Hakların",
       paragraphs: [
-        `KVKK 11. madde gereği: verilerinin işlenip işlenmediğini öğrenme, işlendiyse bilgi isteme, amacını ve uygun kullanılıp kullanılmadığını öğrenme, aktarıldığı kişileri bilme, eksik ya da yanlışsa düzeltilmesini, silinmesini isteme, bu işlemlerin aktarılan kişilere bildirilmesini isteme, otomatik analizle aleyhine bir sonuç çıkmasına itiraz etme ve zararın giderilmesini isteme hakkın var. Başvurunu ${CONTROLLER.email} adresine yaz; en geç 30 gün içinde ücretsiz cevap veririz. Kişisel Verileri Koruma Kurulu'na şikâyet hakkın da saklıdır.`,
+        `KVKK 11. madde gereği: verilerinin işlenip işlenmediğini öğrenme, işlendiyse bilgi isteme, amacını ve uygun kullanılıp kullanılmadığını öğrenme, aktarıldığı kişileri bilme, eksik ya da yanlışsa düzeltilmesini, silinmesini isteme, bu işlemlerin aktarılan kişilere bildirilmesini isteme, otomatik analizle aleyhine bir sonuç çıkmasına itiraz etme ve zararın giderilmesini isteme hakkın var. Başvurunu ${CONTROLLER.email} adresine e-postayla ya da yukarıdaki posta adresine yazılı olarak yap; en geç 30 gün içinde ücretsiz cevap veririz. Kişisel Verileri Koruma Kurulu'na şikâyet hakkın da saklıdır.`,
         "Listeden istediğin an çıkabilirsin: her e-postanın altındaki \"abonelikten çık\" bağlantısına tıkla ya da bize yaz. 18 yaşından küçüksen listeye bir velinle birlikte kaydol.",
       ],
     },
@@ -115,7 +115,7 @@ export const PRIVACY_EN: PrivacyText = {
     {
       title: "Your rights",
       paragraphs: [
-        `You have the right to access your data, to have it corrected or erased, to restrict or object to its processing, to data portability, and to withdraw your consent at any time without affecting what was done before. Write to ${CONTROLLER.email}; we answer within one month. You also have the right to lodge a complaint with the data protection authority of your country.`,
+        `You have the right to access your data, to have it corrected or erased, to restrict or object to its processing, to data portability, and to withdraw your consent at any time without affecting what was done before. Write to ${CONTROLLER.email} or to the postal address above; we answer within one month. You also have the right to lodge a complaint with the data protection authority of your country.`,
         "You can leave the list at any time: click the \"unsubscribe\" link at the bottom of any email or write to us. If you are under 16, join the list together with a parent.",
       ],
     },
