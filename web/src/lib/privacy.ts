@@ -1,14 +1,14 @@
 // The privacy page (#/gizlilik): the KVKK notice (aydınlatma metni) in Turkish and the GDPR privacy notice in
 // English, every text in one place (PRIVACY / PRIVACY_EN; the page picks one with L()).
-// Placeholders in [brackets] are filled in before the site goes public.
+// The controller's postal address is added once the owner of the office address agrees (until then: the city).
 
 /** The page's address: #/gizlilik. Not a study id. */
 export const PRIVACY_ROUTE = "gizlilik";
 
 /** The data controller (veri sorumlusu): a natural person until the company is founded. */
 export const CONTROLLER = {
-  name: "[Ad Soyad]",
-  address: "[Posta adresi]",
+  name: "Evren Aykut Ögel",
+  address: "İstanbul, Türkiye",
   email: "contact@deepchesstheory.com",
 };
 
@@ -67,7 +67,7 @@ export const PRIVACY: PrivacyText = {
     {
       title: "Hakların",
       paragraphs: [
-        `KVKK 11. madde gereği: verilerinin işlenip işlenmediğini öğrenme, işlendiyse bilgi isteme, amacını ve uygun kullanılıp kullanılmadığını öğrenme, aktarıldığı kişileri bilme, eksik ya da yanlışsa düzeltilmesini, silinmesini isteme, bu işlemlerin aktarılan kişilere bildirilmesini isteme, otomatik analizle aleyhine bir sonuç çıkmasına itiraz etme ve zararın giderilmesini isteme hakkın var. Başvurunu ${CONTROLLER.email} adresine ya da yukarıdaki posta adresine yaz; en geç 30 gün içinde ücretsiz cevap veririz. Kişisel Verileri Koruma Kurulu'na şikâyet hakkın da saklıdır.`,
+        `KVKK 11. madde gereği: verilerinin işlenip işlenmediğini öğrenme, işlendiyse bilgi isteme, amacını ve uygun kullanılıp kullanılmadığını öğrenme, aktarıldığı kişileri bilme, eksik ya da yanlışsa düzeltilmesini, silinmesini isteme, bu işlemlerin aktarılan kişilere bildirilmesini isteme, otomatik analizle aleyhine bir sonuç çıkmasına itiraz etme ve zararın giderilmesini isteme hakkın var. Başvurunu ${CONTROLLER.email} adresine yaz; en geç 30 gün içinde ücretsiz cevap veririz. Kişisel Verileri Koruma Kurulu'na şikâyet hakkın da saklıdır.`,
         "Listeden istediğin an çıkabilirsin: her e-postanın altındaki \"abonelikten çık\" bağlantısına tıkla ya da bize yaz. 18 yaşından küçüksen listeye bir velinle birlikte kaydol.",
       ],
     },
