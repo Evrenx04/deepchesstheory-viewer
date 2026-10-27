@@ -5,6 +5,22 @@ import { formatSan, type Notation } from "../lib/notation";
 import { useNotation } from "../lib/notationContext";
 import { RichInline, RichText } from "./RichText";
 import { t } from "../lib/i18n";
+import { CONTROLLER } from "../lib/privacy";
+
+/**
+ * Under a note or a card summary: where to write about a mistake (2026-10-28 proposal). The email opens with the page's
+ * address in its body, so the reader does not have to say where they were.
+ */
+export function ReportLine({ where }: { where?: string }) {
+  const subject = t("Hata bildirimi");
+  const body = `${t("Sayfa")}: ${window.location.href}${where ? `\n${t("Yer")}: ${where}` : ""}\n\n`;
+  const href = `mailto:${CONTROLLER.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return (
+    <p className="report-line">
+      {t("Bir hata ya da eksik mi gördün?")} <a href={href}>{CONTROLLER.email}</a>
+    </p>
+  );
+}
 
 /** Top right of an opened piece: closes it again, and whatever was opened after it (user, 2026-10-26). */
 export function HideButton({ onClick }: { onClick: () => void }) {
@@ -231,6 +247,7 @@ export function CommentPanel({ node, intro, introDeep, showDeep, onToggleDeep, g
           )}
         </div>
       )}
+      {!empty && <ReportLine where={moveLabel(node, notation) || undefined} />}
     </article>
   );
 }

@@ -80,6 +80,10 @@ export const EN: Record<string, Entry> = {
   "Bu bölümde öğreneceklerin": "What you will learn in this chapter",
   "Aklında kalsın": "Keep in mind",
   "Bu hamlede yorum yok, devam et.": "No comment on this move; keep going.",
+  "Bir hata ya da eksik mi gördün?": "Spotted a mistake or something missing?",
+  "Hata bildirimi": "Error report",
+  "Sayfa": "Page",
+  "Yer": "Position",
   Derinlemesine: "Going deeper",
   // LinePath
   Yol: "Path",

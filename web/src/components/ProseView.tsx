@@ -2,7 +2,7 @@ import { t } from "../lib/i18n";
 import { useEffect, useRef, useState } from "react";
 import { diagrams, wordCount, type Block } from "../lib/prose";
 import { RichInline } from "./RichText";
-import { HideButton, moreLabel } from "./CommentPanel";
+import { HideButton, moreLabel, ReportLine } from "./CommentPanel";
 
 interface Props {
   blocks: Block[];
@@ -170,6 +170,7 @@ export function ProseView({ blocks, active, showDeep, onActivate }: Props) {
         </div>
       )}
       {all && render(rest)}
+      {all && <ReportLine />}
     </div>
   );
 }
