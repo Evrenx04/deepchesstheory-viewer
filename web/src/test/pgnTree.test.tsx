@@ -178,6 +178,17 @@ describe("choices and line path", () => {
     expect(picked).toEqual([nf3.id]);
   });
 
+  it("borrows a later note only for a side line, and names its move", () => {
+    const t = parseStudyPgn("1. e4 e5 2. Nf3 { Ana hamle. } (2. Bc4 Nf6 3. d3 { Yan kolun fikri. }) 2... Nc6 3. Bb5 { Üç hamle. } *");
+    const e5 = t.nodes.get(mainlineAt(t, 2))!;
+    const { container } = render(<NextMoves tree={t} node={e5} onSelect={() => {}} />);
+    const previews = [...container.querySelectorAll(".next-move")].map((b) => b.querySelector(".next-preview")?.textContent ?? "");
+    expect(previews).toEqual(["Ana hamle.", "3.d3: Yan kolun fikri."]);
+    const nf3 = t.nodes.get(mainlineAt(t, 3))!;
+    const { container: next } = render(<NextMoves tree={t} node={nf3} onSelect={() => {}} />);
+    expect(next.querySelector(".next-preview")).toBeNull();
+  });
+
   it("previews only the first sentence, without markup", () => {
     expect(preview("**Kalın** ve [[x|bağlantı]] birlikte bir cümle. İkinci cümle.")).toBe("Kalın ve bağlantı birlikte bir cümle.");
     expect(preview("Erken. Siyah merkezi açar. Üçüncü.")).toBe("Erken. Siyah merkezi açar.");

@@ -27,11 +27,13 @@ export function preview(text: string, max = 110): string {
   return out.length > max ? `${out.slice(0, max - 1).trimEnd()}…` : out;
 }
 
-// A side line's idea is often explained a move or two after it starts.
-function lineComment(tree: MoveTree, node: MoveNode): string {
-  for (let n: MoveNode | undefined = node, i = 0; n && i < 4; n = tree.nodes.get(n.children[0]), i++)
-    if (n.comment) return n.comment;
-  return "";
+// A side line's idea is often explained a move or two after it starts: the preview then names the move
+// it belongs to. The main line shows only the move's own comment; a later one read as if it were about
+// this move (user, 2026-10-30: "5...Nf6" carried 7.Ne5's note).
+function lineComment(tree: MoveTree, node: MoveNode, lookAhead: boolean): { text: string; from: MoveNode | null } {
+  for (let n: MoveNode | undefined = node, i = 0; n && i < (lookAhead ? 4 : 1); n = tree.nodes.get(n.children[0]), i++)
+    if (n.comment) return { text: n.comment, from: n === node ? null : n };
+  return { text: "", from: null };
 }
 
 export function moveText(node: MoveNode, notation: Parameters<typeof formatSan>[1], forceNumber = true) {
@@ -55,15 +57,23 @@ export function NextMoves({ tree, node, onSelect, exclude }: Props) {
           {/* One move on: named too, so the main line never goes on unseen (user, 2026-10-26). */}
           <div className="next-title">{children.length > 1 ? t("Burada {n} seçenek var", { n: children.length }) : t("Sıradaki hamle")}</div>
           <ul>
-            {children.map((child, i) => (
-              <li key={child.id}>
-                <button className="next-move" onClick={() => onSelect(child.id)}>
-                  <span className="san">{moveText(child, notation)}</span>
-                  <span className={`next-tag${i === 0 ? " main" : ""}`}>{i === 0 ? t("ana hat") : t("alternatif")}</span>
-                  {lineComment(tree, child) && <span className="next-preview"><RichInline text={preview(lineComment(tree, child))} /></span>}
-                </button>
-              </li>
-            ))}
+            {children.map((child, i) => {
+              const { text, from } = lineComment(tree, child, i > 0);
+              return (
+                <li key={child.id}>
+                  <button className="next-move" onClick={() => onSelect(child.id)}>
+                    <span className="san">{moveText(child, notation)}</span>
+                    <span className={`next-tag${i === 0 ? " main" : ""}`}>{i === 0 ? t("ana hat") : t("alternatif")}</span>
+                    {text && (
+                      <span className="next-preview">
+                        {from && <span className="san">{moveText(from, notation)}: </span>}
+                        <RichInline text={preview(text)} />
+                      </span>
+                    )}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         </>
       )}
